@@ -96,4 +96,4 @@ client.on('interactionCreate', async interaction => {
   }
 });
 
-client.login(config.TOKEN);
+client.login(config.token);
