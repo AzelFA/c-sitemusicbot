@@ -19,14 +19,12 @@
   },
   "homepage": "https://github.com/AzelFA/c-sitemusicbot#readme",
   "dependencies": {
-    "@discordjs/opus": "^0.7.0",
-    "discord-player": "^5.2.0",
-    "discord.js": "^13.3.1",
+    "@discordjs/opus": "^0.6.0",
+    "discord-player": "^5.1.0",
+    "discord.js": "^13.1.0",
     "ffmpeg": "^0.0.4",
     "fluent-ffmpeg": "^2.1.2",
     "ytdl-core": "^4.9.2"
-  },
-  "engines": {
-    "node": "16.6"
   }
+
 }
