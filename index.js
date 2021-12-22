@@ -51,7 +51,7 @@ client.once('ready', async () => {
 });
 
 client.on('ready', function() {
-  client.user.setActivity(config.activity, { type: config.activityType });
+  client.user.setActivity(process.env.activity, { type: process.env.activityType });
 });
 
 client.once('reconnecting', () => {
@@ -96,4 +96,4 @@ client.on('interactionCreate', async interaction => {
   }
 });
 
-client.login(config.token);
+client.login(process.env.token);
