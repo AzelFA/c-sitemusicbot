@@ -1,0 +1,27 @@
+{
+  "name": "c-sitemusicbot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AzelFA/c-sitemusicbot.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AzelFA/c-sitemusicbot/issues"
+  },
+  "homepage": "https://github.com/AzelFA/c-sitemusicbot#readme",
+  "dependencies": {
+    "@discordjs/opus": "github:discordjs/opus",
+    "discord.js": "^13.3.1",
+    "discord.js-commando": "^0.12.3",
+    "ytdl-core": "^4.9.2"
+  }
+}
