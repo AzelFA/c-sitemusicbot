@@ -50,9 +50,9 @@ client.once('ready', async () => {
   console.log('Ready!');
 });
 
-// client.on('ready', function() {
-//   client.user.setActivity(process.env.activity, { type: process.env.activityType });
-// });
+client.on('ready', function() {
+  client.user.setActivity(process.env.activity, { type: process.env.activityType });
+});
 
 client.once('reconnecting', () => {
   console.log('Reconnecting!');
