@@ -3,6 +3,7 @@ const Discord = require('discord.js');
 const Client = require('./client/Client');
 const config = require('./config.json');
 const {Player} = require('discord-player');
+const DiscordRPC = require('discord-rpc'); // Requiring the discord-rpc package.
 
 const client = new Client();
 client.commands = new Discord.Collection();
@@ -95,5 +96,22 @@ client.on('interactionCreate', async interaction => {
     });
   }
 });
+
+const DiscRPC = new DiscordRPC.Client({ transport: 'ipc' }); // Creating a client variable with is our rpc client.
+
+(async () => {
+  DiscRPC.on('ready', async () => { // Calling the ready event.
+      await DiscRPC.setActivity({ // Setting the Rich Presence Activity based on what is passed in here.
+          buttons: [{ label: "Music Source Code", url: "https://github.com/TannerGabriel/discord-bot" }],
+          details: "Check out this bot",
+          largeImageKey: "rpc_icon",
+          largeImageText: ""
+      }).catch(err => console.log(err));
+
+      console.log("Discord Rich Presence has been enabled.");
+  });
+
+  await client.login({ clientId: process.env.applicationID }).catch(console.error); // Logging into our application.
+})();
 
 client.login(process.env.TOKEN);
