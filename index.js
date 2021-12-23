@@ -111,7 +111,7 @@ const DiscRPC = new DiscordRPC.Client({ transport: 'ipc' }); // Creating a clien
       console.log("Discord Rich Presence has been enabled.");
   });
 
-  await client.login({ clientId: process.env.applicationID }).catch(console.error); // Logging into our application.
+  await DiscRPC.login({ clientId: process.env.applicationID }).catch(console.error); // Logging into our application.
 })();
 
 client.login(process.env.TOKEN);
