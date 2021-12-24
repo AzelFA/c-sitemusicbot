@@ -1,9 +1,12 @@
 const fs = require('fs');
 const Discord = require('discord.js');
 const Client = require('./client/Client');
+const Levels = require('discord-xp');
 const config = require('./config.json');
 const {Player} = require('discord-player');
+const mongoose = require('./database/mongoose');
 
+Levels.setURL(`mongodb+srv://c-site:${config.PASS}@c-site.rriyx.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`)
 const client = new Client();
 client.commands = new Discord.Collection();
 
@@ -77,13 +80,19 @@ client.on('messageCreate', async message => {
         console.error(err);
       });
   }
-});
+  const randomXP = Math.floor(Math.random()*24)+1; //1-25
+        const hasLeveledUp = await Levels.appendXp(message.author.id, message.guild.id, randomXP);
+        if(hasLeveledUp) {
+            const user = await Levels.fetch(message.author.id, message.guild.id);
+            message.channel.send(`${message.member}, you have leveled up to level ${user.level}`);
+        }
+});    
 
 client.on('interactionCreate', async interaction => {
   const command = client.commands.get(interaction.commandName.toLowerCase());
 
   try {
-    if (interaction.commandName == 'ban' || interaction.commandName == 'userinfo') {
+    if (interaction.commandName == 'ban' || interaction.commandName == 'userinfo' || interaction.commandName == 'level' || interaction.commandName == 'leaderboard') {
       command.execute(interaction, client);
     } else {
       command.execute(interaction, player);
@@ -96,4 +105,5 @@ client.on('interactionCreate', async interaction => {
   }
 });
 
+mongoose.init();
 client.login(process.env.TOKEN);
