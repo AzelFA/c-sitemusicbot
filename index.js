@@ -6,7 +6,7 @@ const config = require('./config.json');
 const {Player} = require('discord-player');
 const mongoose = require('./database/mongoose');
 
-Levels.setURL(`mongodb+srv://c-site:${config.PASS}@c-site.rriyx.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`)
+Levels.setURL(`mongodb+srv://c-site:${process.env.PASS}@c-site.rriyx.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`)
 const client = new Client();
 client.commands = new Discord.Collection();
 
