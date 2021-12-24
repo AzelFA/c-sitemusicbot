@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const config = require('./../config.json');
 
 module.exports = {
     init: () => {
@@ -12,7 +11,7 @@ module.exports = {
             family: 4
         };
 
-        mongoose.connect(`mongodb+srv://c-site:${config.PASS}@c-site.rriyx.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`);
+        mongoose.connect(`mongodb+srv://c-site:${process.env.PASS}@c-site.rriyx.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`);
         mongoose.Promise = global.Promise;
 
         mongoose.connection.on('connected', () => {
