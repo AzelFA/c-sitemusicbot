@@ -2,7 +2,7 @@ const Levels = require('discord-xp');
 
 module.exports = {
     name: 'leaderboard',
-    description: 'idk why i cant spawn in slash command',
+    description: 'Shows top 5 users level',
 
     async execute(interaction, client) {
         let str = '';
